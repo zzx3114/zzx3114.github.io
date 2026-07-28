@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>跳转到抖音</title>
+  <title>打开抖音 App</title>
   <style>
     :root {
       color-scheme: light dark;
@@ -35,20 +35,29 @@
       font-weight: 700;
       user-select: none;
     }
+
+    .hint {
+      margin-top: 1rem;
+      color: #bbb;
+      font-size: 0.95rem;
+    }
   </style>
 </head>
 <body>
-  <main aria-label="点击页面跳转到抖音">
-    <h1>点击跳转到抖音</h1>
-    <p>本页面只会在点击后跳转到抖音官网。</p>
-    <span class="button">打开抖音</span>
+  <main aria-label="点击页面打开抖音 App">
+    <h1>点击打开抖音 App</h1>
+    <p>本页面只会尝试唤起抖音 App，不会跳转到任何其他页面或抖音网站版。</p>
+    <span class="button">打开抖音 App</span>
+    <p class="hint" id="hint" role="status" aria-live="polite"></p>
   </main>
 
   <script>
-    const douyinUrl = 'https://www.douyin.com/';
+    const douyinAppUrl = 'snssdk1128://';
+    const hint = document.getElementById('hint');
 
     document.addEventListener('click', () => {
-      window.location.assign(douyinUrl);
+      hint.textContent = '正在尝试打开抖音 App。如果没有反应，请确认已安装抖音。';
+      window.location.href = douyinAppUrl;
     });
   </script>
 </body>
